@@ -1,0 +1,14 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+*.txt -text
+*.json -text
+*.xml -text
+
+# Declare files that will always have CRLF line endings on checkout.
+*.h text eol=crlf
+*.hpp text eol=crlf
+*.cpp text eol=crlf
+
+# Declare files that will always have LF line endings on checkout.
+*.sh text eol=lf

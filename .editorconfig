@@ -1,0 +1,24 @@
+# http://editorconfig.org
+
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+
+[CMakeLists.*]
+indent_size = 4
+
+[*.{c++,cc,cpp,cxx,h,h++,hh,hpp,hxx,inl,ipp,tlh,tli}]
+indent_size = 2
+cpp_indent_case_contents_when_block = true
+cpp_new_line_before_open_brace_namespace = same_line
+
+[*.md]
+indent_size = 2
+
+[*.sh]
+indent_size        = 2
+indent_style       = space
+shell_variant      = bash
+switch_case_indent = true
