@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-set(PROJECT_NAME test_shapes)
+set(PROJECT_NAME test_runner)
 
 set(PROJECT_SOURCE_DIR src)
 
@@ -20,4 +20,4 @@ foreach(LIBRARY ${PROJECT_LIB_DIR})
     add_subdirectory(${LIBRARY})
 endforeach(LIBRARY)
 
-target_link_libraries(${PROJECT_NAME} ${PROJECT_LIB_DIR})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${PROJECT_LIB_DIR})
