@@ -1,23 +1,14 @@
 cmake_minimum_required(VERSION 3.20)
+project(ShapesTestApp)
 
-set(PROJECT_NAME test_runner)
-
-set(PROJECT_SOURCE_DIR src)
+set(PROJECT_SOURCE_DIR test_app/src)
 
 set(PROJECT_SOURCES
     ${PROJECT_SOURCE_DIR}/main.cpp
 )
 
-set(PROJECT_LIB_DIR
-    shapes
-)
-
-project(${PROJECT_NAME})
+# Import Library
+add_subdirectory(shapes)
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
-
-foreach(LIBRARY ${PROJECT_LIB_DIR})
-    add_subdirectory(${LIBRARY})
-endforeach(LIBRARY)
-
-target_link_libraries(${PROJECT_NAME} PUBLIC ${PROJECT_LIB_DIR})
+target_link_libraries(${PROJECT_NAME} PUBLIC shapes)

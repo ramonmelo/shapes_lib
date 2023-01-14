@@ -10,7 +10,6 @@ void displayPoint(Point& p) {
 int main()
 {
   Point p(1, 2, 3);
-
   displayPoint(p);
 
   return 0;
