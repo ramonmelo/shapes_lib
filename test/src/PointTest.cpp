@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include <shapes/Point.h>
 
-TEST(blaTest, test1) {
+TEST(ShapesTest, SimpleTest) {
   Point p(1, 2, 3);
 
   EXPECT_EQ(p.getX(), 1);
