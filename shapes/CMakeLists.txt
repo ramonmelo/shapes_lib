@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.20)
 project(shapes VERSION 0.0.1 LANGUAGES CXX)
 
-# Defines
+# User Settings Defines
+
+set(BUILD_STATIC_LIBS OFF CACHE BOOL "Create a static library")
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Create a shared library")
 
 ## Define Source Code files
 
@@ -19,10 +22,19 @@ set(LIBRARY_SOURCES
 
 ## Define Library
 
-add_library(${PROJECT_NAME}
-    ${LIBRARY_HEADERS}
-    ${LIBRARY_SOURCES}
-)
+if (BUILD_STATIC_LIBS)
+    add_library(${PROJECT_NAME} STATIC
+        ${LIBRARY_HEADERS}
+        ${LIBRARY_SOURCES}
+    )
+endif()
+
+if (BUILD_SHARED_LIBS)
+    add_library(${PROJECT_NAME} SHARED
+        ${LIBRARY_HEADERS}
+        ${LIBRARY_SOURCES}
+    )
+endif()
 
 ## Define API
 
