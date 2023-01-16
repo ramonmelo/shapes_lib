@@ -1,16 +1,8 @@
 #include <iostream>
 #include <shapes/Point.h>
+#include "gtest/gtest.h"
 
-using namespace std;
-
-void displayPoint(Point& p) {
-  cout << p.getX() << "," << p.getY() << "," << p.getZ() << endl;
-}
-
-int main()
-{
-  Point p(1, 2, 3);
-  displayPoint(p);
-
-  return 0;
+int main(int argc, char** argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
