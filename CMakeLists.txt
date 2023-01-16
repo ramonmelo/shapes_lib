@@ -38,6 +38,8 @@ endif()
 
 ## Define API
 
+if (TARGET ${PROJECT_NAME})
+
 target_include_directories(${PROJECT_NAME} PRIVATE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME}>
     $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
@@ -50,7 +52,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${LIBRARY_HEADERS})
 
+endif()
+
 ## Define Install
+
+if (TARGET ${PROJECT_NAME})
 
 set(OUTPUT_DEBUG_DIR Debug/${PROJECT_NAME})
 set(OUTPUT_RELEASE_DIR Release/${PROJECT_NAME})
@@ -67,6 +73,7 @@ install(TARGETS ${PROJECT_NAME}
   LIBRARY DESTINATION ${OUTPUT_RELEASE_DIR}/lib
   PUBLIC_HEADER DESTINATION ${OUTPUT_RELEASE_DIR}/include)
 
+endif()
 
 # Setup Test
 
