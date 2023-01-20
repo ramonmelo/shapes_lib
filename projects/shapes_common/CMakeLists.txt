@@ -1,12 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
-project(shapes VERSION 0.0.1 LANGUAGES CXX)
+project(shapes_common VERSION 0.0.1 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 14)
-
-# User Settings Defines
-
-set(BUILD_STATIC_LIBS OFF CACHE BOOL "Create a static library")
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "Create a shared library")
+set(CMAKE_CXX_STANDARD 17)
 
 # Define Source Code files
 
@@ -14,24 +9,18 @@ set(LIBRARY_HEADER_DIR include/${PROJECT_NAME})
 set(LIBRARY_SOURCE_DIR src)
 
 set(LIBRARY_HEADERS
-    ${LIBRARY_HEADER_DIR}/Point.h
-    ${LIBRARY_HEADER_DIR}/core/BasePoint.h
+    ${LIBRARY_HEADER_DIR}/utils.h
 )
 
-set(LIBRARY_SOURCES
-    ${LIBRARY_SOURCE_DIR}/Point.cpp
-    ${LIBRARY_SOURCE_DIR}/core/BasePoint.cpp
+set(LIBRARY_SOURCERS
+    ${LIBRARY_SOURCE_DIR}/utils.cpp
 )
 
 # Define Library
 
-add_library(${PROJECT_NAME}
+add_library(${PROJECT_NAME} STATIC
     ${LIBRARY_HEADERS}
-    ${LIBRARY_SOURCES}
-)
-
-target_link_libraries(${PROJECT_NAME} PUBLIC
-    shapes_common
+    ${LIBRARY_SOURCERS}
 )
 
 # Define API
@@ -49,7 +38,7 @@ target_include_directories(${PROJECT_NAME} INTERFACE
 
 ## Export API
 set_target_properties(
-   ${PROJECT_NAME} 
+    ${PROJECT_NAME} 
     PROPERTIES
         PUBLIC_HEADER "${LIBRARY_HEADERS}"
 )
@@ -61,9 +50,3 @@ install(TARGETS ${PROJECT_NAME}
     LIBRARY DESTINATION lib
     PUBLIC_HEADER DESTINATION include/${PROJECT_NAME}
 )
-
-# Setup Test
-
-if (ENABLE_TESTS)
-    add_subdirectory(test)
-endif()

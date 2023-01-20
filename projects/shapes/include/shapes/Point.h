@@ -1,6 +1,10 @@
-#pragma once
+#ifndef POINT_H
+#define POINT_H
 
-struct Point
+#include <shapes_common/utils.h>
+#include <core/BasePoint.h>
+
+struct Point : BasePoint
 {
 public:
   Point(double, double, double);
@@ -13,3 +17,5 @@ private:
   double y;
   double z;
 };
+
+#endif // !POINT_H
